@@ -51,5 +51,5 @@ def valor_total_diarias_passagens_outros_local_periodo():
     selected_location = st.selectbox("Escolha o local", locations_list)
     selected_period = st.selectbox("Determine um periodo", locations_list)
 
-if(opcao_pergunta == perguntas[0])
+if opcao_pergunta == perguntas[0]:
     valor_total_diarias_passagens_outros_local_periodo()
