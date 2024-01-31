@@ -34,7 +34,9 @@ perguntas = [
     'Qual é o valor das despesas de viagens pagas pelos órgãos pagadores em cada ano?'
 ]
 
-locations_list = ["Brasilia", "Recife", "Pará"]
+locations_list = ["Brasilia", "Recife", "Pará"] #Substituir pelos dados
+parties_list = ["PT", "PSD", "CDB"] #Substituir pelos dados
+period_list = ["2021", "2022", "2023"] 
 
 opcao_pergunta = st.selectbox(
     'Selecione a pergunta: ',
@@ -49,7 +51,83 @@ def valor_total_diarias_passagens_outros_local_periodo():
     "Qual foi o valor total gasto somando diárias, passagens e outros, em cada local e periodo?"
     )
     selected_location = st.selectbox("Escolha o local", locations_list)
-    selected_period = st.selectbox("Determine um periodo", locations_list)
+    start_date, end_date = st.date_input(
+        "Determine um periodo",
+        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+        format="MM/DD/YYYY"
+    )
+
+def valor_total_diarias_passagens_outros_cidade():
+    st.subheader(
+    "Abaixo é possível regular alguns filtros para obter melhores observações:"
+    )
+    st.write(
+    "Qual foi o valor total gasto somando diárias, passagens e outros por cidade?"
+    )
+    selected_location = st.selectbox("Escolha a cidade", locations_list)
+
+def valor_total_diarias_cidade_pais_ano():
+    st.subheader(
+    "Abaixo é possível regular alguns filtros para obter melhores observações:"
+    )
+    st.write(
+    "Qual foi o valor total gasto somando diárias por cidade e ano?"
+    )
+    selected_location = st.selectbox("Escolha o local", locations_list)
+    selected_year = st.selectbox("Escolha o ano", period_list)
+
+def valor_medio_diarias_local_periodo():
+    st.subheader(
+    "Abaixo é possível regular alguns filtros para obter melhores observações:"
+    )
+    st.write(
+    "Qual foi o valor medio gasto em diárias por local e periodo?"
+    )
+    selected_location = st.selectbox("Escolha o local", locations_list)
+
+    start_date, end_date = st.date_input(
+        "Determine um periodo",
+        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+        format="MM/DD/YYYY"
+    )
+
+def valor_medio_diarias_local_periodo():
+    st.subheader(
+    "Abaixo é possível regular alguns filtros para obter melhores observações:"
+    )
+    st.write(
+    "Qual foi o valor medio gasto em diárias por local e periodo?"
+    )
+    selected_location = st.selectbox("Escolha o local", locations_list)
+
+    start_date, end_date = st.date_input(
+        "Determine um periodo",
+        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+        format="MM/DD/YYYY"
+    )
+
+def despesas_viagens_orgaos_periodo():
+    st.subheader(
+    "Abaixo é possível regular alguns filtros para obter melhores observações:"
+    )
+    st.write(
+    "Qual foi o valor das despesas de viagens pagas pelos órgãos pagadores por ano?"
+    )
+    selected_location = st.selectbox("Escolha o orgao", parties_list)
+
+    start_date, end_date = st.date_input(
+        "Determine um periodo",
+        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+        format="MM/DD/YYYY"
+    )
 
 if opcao_pergunta == perguntas[0]:
     valor_total_diarias_passagens_outros_local_periodo()
+elif opcao_pergunta == perguntas[1]:
+    valor_total_diarias_passagens_outros_cidade()
+elif opcao_pergunta == perguntas[2]:
+    valor_total_diarias_cidade_pais_ano()
+elif opcao_pergunta == perguntas[3]:
+    valor_medio_diarias_local_periodo()
+elif opcao_pergunta == perguntas[4]:
+    despesas_viagens_orgaos_periodo()
