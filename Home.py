@@ -34,7 +34,22 @@ perguntas = [
     'Qual é o valor das despesas de viagens pagas pelos órgãos pagadores em cada ano?'
 ]
 
+locations_list = ["Brasilia", "Recife", "Pará"]
+
 opcao_pergunta = st.selectbox(
     'Selecione a pergunta: ',
     perguntas
 )
+
+def valor_total_diarias_passagens_outros_local_periodo():
+    st.subheader(
+    "Abaixo é possível regular alguns filtros para obter melhores observações:"
+    )
+    st.write(
+    "Qual foi o valor total gasto somando diárias, passagens e outros, em cada local e periodo?"
+    )
+    selected_location = st.selectbox("Escolha o local", locations_list)
+    selected_period = st.selectbox("Determine um periodo", locations_list)
+
+if(opcao_pergunta == perguntas[0])
+    valor_total_diarias_passagens_outros_local_periodo()
