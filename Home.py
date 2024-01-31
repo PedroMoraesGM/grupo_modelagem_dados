@@ -52,9 +52,14 @@ def valor_total_diarias_passagens_outros_local_periodo():
     "Qual foi o valor total gasto somando diárias, passagens e outros, em cada local e periodo?"
     )
     selected_location = st.selectbox("Escolha o local", locations_list)
-    start_date, end_date = st.date_input(
-        "Determine um periodo",
-        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+    start_date = st.date_input(
+        "Determine o periodo de inicio",
+        value=(datetime.date(2021, 1, 1)),
+        format="DD/MM/YYYY"
+    )
+    end_date = st.date_input(
+        "Determine o fim do periodo",
+        value=(datetime.date(2023, 1, 31)),
         format="MM/DD/YYYY"
     )
 
@@ -86,9 +91,14 @@ def valor_medio_diarias_local_periodo():
     )
     selected_location = st.selectbox("Escolha o local", locations_list)
 
-    start_date, end_date = st.date_input(
-        "Determine um periodo",
-        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+    start_date = st.date_input(
+        "Determine o periodo de inicio",
+        value=(datetime.date(2021, 1, 1)),
+        format="DD/MM/YYYY"
+    )
+    end_date = st.date_input(
+        "Determine o fim do periodo",
+        value=(datetime.date(2023, 1, 31)),
         format="MM/DD/YYYY"
     )
 
@@ -101,9 +111,14 @@ def valor_medio_diarias_local_periodo():
     )
     selected_location = st.selectbox("Escolha o local", locations_list)
 
-    start_date, end_date = st.date_input(
-        "Determine um periodo",
-        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+    start_date = st.date_input(
+        "Determine o periodo de inicio",
+        value=(datetime.date(2021, 1, 1)),
+        format="DD/MM/YYYY"
+    )
+    end_date = st.date_input(
+        "Determine o fim do periodo",
+        value=(datetime.date(2023, 1, 31)),
         format="MM/DD/YYYY"
     )
 
@@ -116,9 +131,14 @@ def despesas_viagens_orgaos_periodo():
     )
     selected_location = st.selectbox("Escolha o orgao", parties_list)
 
-    start_date, end_date = st.date_input(
-        "Determine um periodo",
-        value=(datetime.date(2021, 1, 1), datetime.date(2023, 1, 31)),
+    start_date = st.date_input(
+        "Determine o periodo de inicio",
+        value=(datetime.date(2021, 1, 1)),
+        format="DD/MM/YYYY"
+    )
+    end_date = st.date_input(
+        "Determine o fim do periodo",
+        value=(datetime.date(2023, 1, 31)),
         format="MM/DD/YYYY"
     )
 
