@@ -38,6 +38,7 @@ perguntas = [
 ]
 
 locations_list = ["Brasilia", "Recife", "Pará"] #Substituir pelos dados
+cities_list = p2.pegar_todas_cidades()
 period_list = ["2021", "2022", "2023"] 
 min_date = datetime.date(2021, 1, 1)
 max_date = datetime.date(2023, 12, 31)
@@ -81,14 +82,14 @@ def valor_total_diarias_passagens_outros_cidade():
     st.write(
     "Qual foi o valor total gasto somando diárias, passagens e outros por cidade?"
     )
-    selected_location = st.selectbox("Escolha a cidade", p2.pegar_todas_cidades())
+    selected_location = st.selectbox("Escolha a cidade", cities_list)
 
     # Obter o valor total gasto pela cidade selecionada
     valor_total = p2.calcular_total_cidade(selected_location)
 
     valor_formatado = formatar_valor(valor_total)
 
-    st.caption(f"O valor total gasto em {selected_location} foi {valor_formatado}")
+    st.subheader(f"O valor total gasto em {selected_location} foi {valor_formatado}")
 
 
 def valor_total_diarias_cidade_pais_ano():
