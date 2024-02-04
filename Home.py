@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 import Pergunta5 as p5
 import Pergunta2 as p2
+import locale
 
 st.set_page_config(
     page_title = "Viagens gov",
@@ -47,6 +48,10 @@ opcao_pergunta = st.selectbox(
     perguntas
 )
 
+def formatar_valor(valor):
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+    return locale.currency(valor, grouping=True, symbol=None)
+
 def valor_total_diarias_passagens_outros_local_periodo():
     st.subheader(
     "Abaixo é possível regular alguns filtros para obter melhores observações:"
@@ -82,9 +87,9 @@ def valor_total_diarias_passagens_outros_cidade():
     # Obter o valor total gasto pela cidade selecionada
     valor_total = p2.calcular_total_cidade(selected_location)
 
-    valor_formatado = f"R$ {valor_total:.2f}"
+    valor_formatado = formatar_valor(valor_total)
 
-    st.write(f"O valor total gasto em {selected_location} foi {valor_formatado}")
+    st.caption(f"O valor total gasto em {selected_location} foi {valor_formatado}")
 
 
 def valor_total_diarias_cidade_pais_ano():
