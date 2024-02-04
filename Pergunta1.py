@@ -18,9 +18,13 @@ def formatar_valor(valor):
 def calcular_total_cidade_periodo(cidade, inicio_periodo, fim_periodo):
     custoTotal = 0
     
-    # Converte os valores de início e fim do período para o formato datetime
+    # Convertendo os valores de início e fim do período para o formato datetime.date
     inicio_periodo = datetime.datetime.strptime(str(inicio_periodo), '%Y-%m-%d').date()
     fim_periodo = datetime.datetime.strptime(str(fim_periodo), '%Y-%m-%d').date()
+    
+    # Convertendo as colunas de inicio_viagem e fim_viagem para datetime.date no DataFrame
+    df_viagem['inicio_viagem'] = pd.to_datetime(df_viagem['inicio_viagem']).dt.date
+    df_viagem['fim_viagem'] = pd.to_datetime(df_viagem['fim_viagem']).dt.date
     
     # Filtrar as linhas de dim_viagem relacionadas ao período
     linhas_periodo = df_viagem[(df_viagem['inicio_viagem'] >= inicio_periodo) & (df_viagem['fim_viagem'] <= fim_periodo)]['id_viagem']
