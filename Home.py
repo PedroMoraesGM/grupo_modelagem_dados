@@ -2,7 +2,6 @@ import streamlit as st
 import datetime
 import Pergunta5 as p5
 import Pergunta2 as p2
-import locale
 
 st.set_page_config(
     page_title = "Viagens gov",
@@ -49,8 +48,8 @@ opcao_pergunta = st.selectbox(
 )
 
 def formatar_valor(valor):
-    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-    return locale.currency(valor, grouping=True, symbol=None)
+    # Formatando o valor como uma soma de dinheiro
+    return '{:,.2f}'.format(valor).replace(',', ' ').replace('.', ',').replace(' ', '.')
 
 def valor_total_diarias_passagens_outros_local_periodo():
     st.subheader(
