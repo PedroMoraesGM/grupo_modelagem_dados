@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 import Pergunta5 as p5
 import Pergunta2 as p2
+import Pergunta1 as p1
 
 st.set_page_config(
     page_title = "Viagens gov",
@@ -59,7 +60,7 @@ def valor_total_diarias_passagens_outros_local_periodo():
     st.write(
     "Qual foi o valor total gasto somando diárias, passagens e outros, em cada local e periodo?"
     )
-    selected_location = st.selectbox("Escolha o local", locations_list)
+    selected_location = st.selectbox("Escolha o local", cities_list)
     start_date = st.date_input(
         "Determine o periodo de inicio",
         value=(datetime.date(2021, 1, 1)),
@@ -74,6 +75,10 @@ def valor_total_diarias_passagens_outros_local_periodo():
         max_value=max_date,
         format="MM/DD/YYYY"
     )
+
+    total_cidade_periodo = p1.calcular_total_cidade_periodo(selected_location, start_date, end_date)
+    total_formatado = formatar_valor(total_cidade_periodo)
+    st.subheader(f'O custo total para a cidade de {selected_location} no período de {start_date} a {end_date} é: R$ {total_formatado}')
 
 def valor_total_diarias_passagens_outros_cidade():
     st.subheader(
