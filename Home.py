@@ -56,7 +56,7 @@ def formatar_valor(valor):
 def valor_total_diarias_passagens_outros_local_periodo():
     st.subheader("Abaixo é possível regular alguns filtros para obter melhores observações:")
     st.write("Qual foi o valor total gasto somando diárias, passagens e outros, em cada local e período?")
-    selected_location = st.selectbox("Escolha o local", pegar_todas_cidades())
+    selected_location = st.selectbox("Escolha o local", cities_list)
     start_date = st.date_input("Determine o período de início", value=(datetime.date(2021, 1, 1)), min_value=min_date, max_value=max_date)
     end_date = st.date_input("Determine o fim do período", value=(datetime.date(2023, 1, 31)), min_value=min_date, max_value=max_date)
 
