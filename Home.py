@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+import Pergunta5 as p5
 
 st.set_page_config(
     page_title = "Viagens gov",
@@ -36,9 +37,7 @@ perguntas = [
 ]
 
 locations_list = ["Brasilia", "Recife", "Pará"] #Substituir pelos dados
-parties_list = ["PT", "PSD", "CDB"] #Substituir pelos dados
 period_list = ["2021", "2022", "2023"] 
-
 min_date = datetime.date(2021, 1, 1)
 max_date = datetime.date(2023, 12, 31)
 
@@ -144,22 +143,9 @@ def despesas_viagens_orgaos_periodo():
     st.write(
     "Qual foi o valor das despesas de viagens pagas pelos órgãos pagadores por ano?"
     )
-    selected_location = st.selectbox("Escolha o orgao", parties_list)
-
-    start_date = st.date_input(
-        "Determine o periodo de inicio",
-        value=(datetime.date(2021, 1, 1)),
-        min_value=min_date,
-        max_value=max_date,
-        format="DD/MM/YYYY"
-    )
-    end_date = st.date_input(
-        "Determine o fim do periodo",
-        value=(datetime.date(2023, 1, 31)),
-        min_value=min_date,
-        max_value=max_date,
-        format="MM/DD/YYYY"
-    )
+    orgao = st.selectbox("Escolha o orgao", p5.pegar_todos_nomes_orgao())
+    ano = st.selectbox("Escolha o ano", p5.pegar_anos_de_pagamento(orgao))
+    p5.pegar_pagamentos_orgao_por_ano(orgao, ano)
 
 if opcao_pergunta == perguntas[0]:
     valor_total_diarias_passagens_outros_local_periodo()
