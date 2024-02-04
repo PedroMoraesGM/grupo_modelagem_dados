@@ -1,6 +1,7 @@
 import streamlit as st
 import datetime
 import Pergunta5 as p5
+import Pergunta2 as p2
 
 st.set_page_config(
     page_title = "Viagens gov",
@@ -76,7 +77,15 @@ def valor_total_diarias_passagens_outros_cidade():
     st.write(
     "Qual foi o valor total gasto somando diárias, passagens e outros por cidade?"
     )
-    selected_location = st.selectbox("Escolha a cidade", locations_list)
+    selected_location = st.selectbox("Escolha a cidade", p2.pegar_todas_cidades())
+
+    # Obter o valor total gasto pela cidade selecionada
+    valor_total = p2.calcular_total_cidade(selected_location)
+
+    valor_formatado = f"R$ {valor_total:.2f}"
+
+    st.write(f"O valor total gasto em {selected_location} foi {valor_formatado}")
+
 
 def valor_total_diarias_cidade_pais_ano():
     st.subheader(
