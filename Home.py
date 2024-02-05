@@ -40,7 +40,7 @@ perguntas = [
 ]
 
 locations_list = ["Brasilia", "Recife", "Pará"] #Substituir pelos dados
-cities_list = p2.pegar_todas_cidades()
+cities_list = sorted(p3.pegarLocais())
 period_list = ["2021", "2022", "2023"] 
 min_date = datetime.date(2021, 1, 1)
 max_date = datetime.date(2023, 12, 31)
@@ -90,7 +90,7 @@ def valor_total_passagens_cidade_pais_ano():
     st.subheader(
     "Qual foi o valor total gasto em passagens por cidade em cada ano?"
     )
-    selected_location = st.selectbox("Escolha o local", p3.pegarLocais())
+    selected_location = st.selectbox("Escolha o local", cities_list)
     selected_year = st.selectbox("Escolha o ano", period_list)
     valor_total_passagens = p3.calcular_gastos_passagens_por_cidade_por_ano(selected_location, selected_year)
     if(valor_total_passagens != int(0)):
@@ -98,35 +98,6 @@ def valor_total_passagens_cidade_pais_ano():
         st.write(f"Valor total gasto em passagens para {selected_location} no ano de {selected_year} foi de: {total_formatado}")
     else:
         st.warning("Não há registros para esses valores")
-
-    
-
-
-    
-
-def valor_medio_diarias_local_periodo():
-    st.subheader(
-    "Abaixo é possível regular alguns filtros para obter melhores observações:"
-    )
-    st.write(
-    "Qual foi o valor medio gasto em diárias por local e periodo?"
-    )
-    selected_location = st.selectbox("Escolha o local", locations_list)
-
-    start_date = st.date_input(
-        "Determine o periodo de inicio",
-        value=(datetime.date(2021, 1, 1)),
-        min_value=min_date,
-        max_value=max_date,
-        format="DD/MM/YYYY"
-    )
-    end_date = st.date_input(
-        "Determine o fim do periodo",
-        value=(datetime.date(2023, 1, 31)),
-        min_value=min_date,
-        max_value=max_date,
-        format="MM/DD/YYYY"
-    )
 
 def valor_medio_diarias_local_periodo():
     st.subheader(
