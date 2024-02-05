@@ -3,6 +3,7 @@ import datetime
 import Pergunta5 as p5
 import Pergunta2 as p2
 import Pergunta1 as p1
+import Pergunta3 as p3
 
 st.set_page_config(
     page_title = "Viagens gov",
@@ -33,7 +34,7 @@ st.markdown(f'''
 perguntas = [
     'Qual é o valor total gasto em diárias, passagens e outros gastos por local e períodos', 
     'Qual é o valor total gasto em diárias, passagens e outros gastos por cidade?',
-    'Qual é o valor total gasto em diárias por cidade/país por ano?',
+    'Qual é o valor total gasto em passagens por cidade em cada ano?',
     'Qual é o valor médio gasto em diárias por local(origem e destino) e período (mês e ano)?',
     'Qual é o valor das despesas de viagens pagas pelos órgãos pagadores em cada ano?'
 ]
@@ -82,15 +83,26 @@ def valor_total_diarias_passagens_outros_cidade():
     st.subheader(f"O valor total gasto em {selected_location} foi {valor_formatado}")
 
 
-def valor_total_diarias_cidade_pais_ano():
-    st.subheader(
+def valor_total_passagens_cidade_pais_ano():
+    st.write(
     "Abaixo é possível regular alguns filtros para obter melhores observações:"
     )
-    st.write(
-    "Qual foi o valor total gasto somando diárias por cidade e ano?"
+    st.subheader(
+    "Qual foi o valor total gasto em passagens por cidade em cada ano?"
     )
-    selected_location = st.selectbox("Escolha o local", locations_list)
+    selected_location = st.selectbox("Escolha o local", p3.pegarLocais())
     selected_year = st.selectbox("Escolha o ano", period_list)
+    valor_total_passagens = p3.calcular_gastos_passagens_por_cidade_por_ano(selected_location, selected_year)
+    if(valor_total_passagens != int(0)):
+        total_formatado = f'R$ {valor_total_passagens:,.2f}'.replace(',', 'v').replace('.', ',').replace('v', '.')
+        st.write(f"Valor total gasto em passagens para {selected_location} no ano de {selected_year} foi de: {total_formatado}")
+    else:
+        st.warning("Não há registros para esses valores")
+
+    
+
+
+    
 
 def valor_medio_diarias_local_periodo():
     st.subheader(
@@ -156,7 +168,7 @@ if opcao_pergunta == perguntas[0]:
 elif opcao_pergunta == perguntas[1]:
     valor_total_diarias_passagens_outros_cidade()
 elif opcao_pergunta == perguntas[2]:
-    valor_total_diarias_cidade_pais_ano()
+    valor_total_passagens_cidade_pais_ano()
 elif opcao_pergunta == perguntas[3]:
     valor_medio_diarias_local_periodo()
 elif opcao_pergunta == perguntas[4]:
