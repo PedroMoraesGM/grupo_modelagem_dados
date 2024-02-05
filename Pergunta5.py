@@ -59,8 +59,8 @@ def pegar_pagamentos_orgao_por_ano(orgao_selecionado, ano_selecionado):
         df_ano_filtrado = df_ano_filtrado.sort_values(by='Total')
 
         # Detalhamento dos custos de cada viagem
-        st.dataframe(df_ano_filtrado[['Diárias', 'Passagens', 'Outros', 'Total']], hide_index=True, use_container_width=True)
+        #st.dataframe(df_ano_filtrado[['Diárias', 'Passagens', 'Outros', 'Total']], hide_index=True, use_container_width=True)
 
         # Mostra a soma total
         total_formatado = f'R$ {gasto_total_no_ano:,.2f}'.replace(',', 'v').replace('.', ',').replace('v', '.')
-        st.write(f"A soma total dos salários é: {total_formatado}")
+        st.write(f"A soma total dos gastos é: {total_formatado}")
