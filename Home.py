@@ -4,6 +4,7 @@ import Pergunta5 as p5
 import Pergunta2 as p2
 import Pergunta1 as p1
 import Pergunta3 as p3
+import Pergunta4 as p4
 
 st.set_page_config(
     page_title = "Viagens gov",
@@ -102,28 +103,17 @@ def valor_total_passagens_cidade_pais_ano():
         st.warning("Não há registros para esses valores")
 
 def valor_medio_diarias_local_periodo():
-    st.subheader(
-    "Abaixo é possível regular alguns filtros para obter melhores observações:"
-    )
-    st.write(
-    "Qual foi o valor medio gasto em diárias por local e periodo?"
-    )
-    selected_location = st.selectbox("Escolha o local", locations_list)
+    st.subheader("Abaixo é possível regular alguns filtros para obter melhores observações:")
+    st.write("Qual é o valor médio gasto em diárias por local e período (mês e ano)?")
+    selected_location = st.selectbox("Escolha o local", cities_list)
+    start_date = st.date_input("Determine o período de início", value=(datetime.date(2021, 1, 1)), min_value=min_date, max_value=max_date)
+    end_date = st.date_input("Determine o fim do período", value=(datetime.date(2023, 1, 31)), min_value=min_date, max_value=max_date)
 
-    start_date = st.date_input(
-        "Determine o periodo de inicio",
-        value=(datetime.date(2021, 1, 1)),
-        min_value=min_date,
-        max_value=max_date,
-        format="DD/MM/YYYY"
-    )
-    end_date = st.date_input(
-        "Determine o fim do periodo",
-        value=(datetime.date(2023, 1, 31)),
-        min_value=min_date,
-        max_value=max_date,
-        format="MM/DD/YYYY"
-    )
+    # Calcular e exibir o valor médio
+    media_diarias_cidade_periodo = p4.calcular_media_diarias_cidade_periodo(selected_location, start_date, end_date)
+    media_diarias_formatada = formatar_valor(media_diarias_cidade_periodo)
+    st.subheader(f'A média de gastos em diárias para a cidade de {selected_location} no período de {start_date} a {end_date} é: R$ {media_diarias_formatada}')
+
 
 def despesas_viagens_orgaos_periodo():
     st.subheader(
