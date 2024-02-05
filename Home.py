@@ -32,7 +32,7 @@ st.markdown(f'''
 ''', unsafe_allow_html=True)
 
 perguntas = [
-    'Qual é o valor total gasto em diárias, passagens e outros gastos por local e períodos', 
+    'Qual é o valor total gasto em diárias, passagens e outros gastos por local e períodos?', 
     'Qual é o valor total gasto em diárias, passagens e outros gastos por cidade?',
     'Qual é o valor total gasto em passagens por cidade em cada ano?',
     'Qual é o valor médio gasto em diárias por local(origem e destino) e período (mês e ano)?',
