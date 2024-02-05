@@ -63,4 +63,6 @@ def pegar_pagamentos_orgao_por_ano(orgao_selecionado, ano_selecionado):
 
         # Mostra a soma total
         total_formatado = f'R$ {gasto_total_no_ano:,.2f}'.replace(',', 'v').replace('.', ',').replace('v', '.')
-        st.write(f"A soma total dos gastos é: {total_formatado}")
+        # st.write(f"A soma total dos gastos é: {total_formatado}")
+        st.subheader(f"A soma total das despesas do {orgao_selecionado} no ano {ano_selecionado} é: {total_formatado}")
+        
