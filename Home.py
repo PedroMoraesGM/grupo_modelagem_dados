@@ -81,6 +81,7 @@ def valor_total_diarias_passagens_outros_cidade():
     valor_formatado = formatar_valor(valor_total)
 
     st.subheader(f"O valor total gasto em {selected_location} foi {valor_formatado}")
+    
 
 
 def valor_total_passagens_cidade_pais_ano():
@@ -95,7 +96,8 @@ def valor_total_passagens_cidade_pais_ano():
     valor_total_passagens = p3.calcular_gastos_passagens_por_cidade_por_ano(selected_location, selected_year)
     if(valor_total_passagens != int(0)):
         total_formatado = f'R$ {valor_total_passagens:,.2f}'.replace(',', 'v').replace('.', ',').replace('v', '.')
-        st.write(f"Valor total gasto em passagens para {selected_location} no ano de {selected_year} foi de: {total_formatado}")
+        st.subheader(f"Valor total gasto em passagens para {selected_location} no ano de {selected_year} foi de: {total_formatado}")
+         
     else:
         st.warning("Não há registros para esses valores")
 
